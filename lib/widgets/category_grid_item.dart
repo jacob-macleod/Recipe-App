@@ -18,6 +18,7 @@ class CategoryGridItem extends StatelessWidget {
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
         ),
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
       ),
       child: Text(
         category.title,
