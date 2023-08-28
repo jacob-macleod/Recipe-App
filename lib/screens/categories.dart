@@ -3,7 +3,8 @@ import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key});
+  const CategoriesScreen(this.showScreen, {super.key});
+  final void Function(String, {String? categoryTitle}) showScreen;
 
   @override
   Widget build(context) {
@@ -20,7 +21,11 @@ class CategoriesScreen extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
         children: [
-          for (final category in availableCategories) CategoryGridItem(category)
+          for (final category in availableCategories)
+            CategoryGridItem(
+              category: category,
+              showScreen: showScreen,
+            )
         ],
       ),
     );

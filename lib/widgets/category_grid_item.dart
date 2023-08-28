@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:meals_app/models/category.dart';
 
 class CategoryGridItem extends StatelessWidget {
-  const CategoryGridItem(this.category, {super.key});
+  const CategoryGridItem(
+      {required this.category, required this.showScreen, super.key});
   final Category category;
+  final void Function(String, {String? categoryTitle}) showScreen;
 
   @override
   Widget build(context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showScreen('meals list', categoryTitle: category.title);
+      },
       splashColor: Theme.of(context).primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
       child: Container(
