@@ -25,13 +25,16 @@ class MealsScreen extends StatelessWidget {
       }
     }
 
-    print(selected_meals);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(title.toString()),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          for (final meal_item in selected_meals)
+            Text(meal_item.title.toString()),
+        ],
+      ),
     );
   }
 }
