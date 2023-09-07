@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/data/dummy_data.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/widgets/error_message.dart';
 
 class MealsScreen extends StatelessWidget {
   MealsScreen({required this.title, required this.meals, super.key});
@@ -31,8 +32,14 @@ class MealsScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          for (final meal_item in selected_meals)
-            Text(meal_item.title.toString()),
+          if (selected_meals.isEmpty)
+            const ErrorMessage(
+              header: "Uh oh, there is a problem",
+              message: "There are no meals in this category",
+            )
+          else
+            for (final meal_item in selected_meals)
+              Text(meal_item.title.toString()),
         ],
       ),
     );

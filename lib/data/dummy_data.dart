@@ -262,7 +262,7 @@ const dummyMeals = [
   Meal(
     id: 'm7',
     categories: [
-      'c7',
+      'c8',
     ],
     title: 'Pancakes',
     affordability: Affordability.affordable,
