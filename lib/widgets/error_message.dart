@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/widgets/text/header.dart';
+import 'package:meals_app/widgets/text/normal_text.dart';
 
 class ErrorMessage extends StatelessWidget {
   const ErrorMessage({required this.header, required this.message, super.key});
@@ -13,8 +15,8 @@ class ErrorMessage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(header),
-            Text(message),
+            Header(header),
+            NormalText(message),
           ],
         ),
       ),
