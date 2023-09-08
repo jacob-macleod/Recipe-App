@@ -30,18 +30,17 @@ class MealsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title.toString()),
       ),
-      body: Column(
-        children: [
-          if (selected_meals.isEmpty)
-            const ErrorMessage(
+      body: (selected_meals.isEmpty)
+          ? const ErrorMessage(
               header: "Uh oh, there is a problem",
               message: "There are no meals in this category",
             )
-          else
-            for (final meal_item in selected_meals)
-              Text(meal_item.title.toString()),
-        ],
-      ),
+          : Column(
+              children: [
+                for (final meal_item in selected_meals)
+                  Text(meal_item.title.toString()),
+              ],
+            ),
     );
   }
 }
