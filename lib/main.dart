@@ -33,15 +33,21 @@ class _AppState extends State<App> {
     super.initState();
   }
 
-  void showScreen(String screen, {String? categoryTitle}) {
+  void showScreen(String screen, BuildContext context,
+      {String? categoryTitle}) {
     if (screen == 'categories') {
-      setState(() {
-        displayScreen = CategoriesScreen(showScreen);
-      });
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => CategoriesScreen(showScreen),
+        ),
+      );
     } else if (screen == 'meals list') {
-      setState(() {
-        displayScreen = MealsScreen(title: categoryTitle, meals: dummyMeals);
-      });
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) =>
+              MealsScreen(title: categoryTitle, meals: dummyMeals),
+        ),
+      );
     }
   }
 

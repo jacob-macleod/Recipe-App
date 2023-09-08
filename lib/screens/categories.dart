@@ -4,7 +4,7 @@ import 'package:meals_app/widgets/category_grid_item.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen(this.showScreen, {super.key});
-  final void Function(String, {String? categoryTitle}) showScreen;
+  final void Function(String, BuildContext, {String? categoryTitle}) showScreen;
 
   @override
   Widget build(context) {

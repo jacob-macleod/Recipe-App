@@ -5,13 +5,13 @@ class CategoryGridItem extends StatelessWidget {
   const CategoryGridItem(
       {required this.category, required this.showScreen, super.key});
   final Category category;
-  final void Function(String, {String? categoryTitle}) showScreen;
+  final void Function(String, BuildContext, {String? categoryTitle}) showScreen;
 
   @override
   Widget build(context) {
     return InkWell(
       onTap: () {
-        showScreen('meals list', categoryTitle: category.title);
+        showScreen('meals list', context, categoryTitle: category.title);
       },
       splashColor: Theme.of(context).primaryColor,
       borderRadius: const BorderRadius.all(Radius.circular(20)),
