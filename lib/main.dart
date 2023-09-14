@@ -3,6 +3,9 @@ import 'package:meals_app/screens/categories.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/screens/meals.dart';
 import 'package:meals_app/data/dummy_data.dart';
+import 'package:meals_app/screens/meal_details.dart';
+
+import 'models/meal.dart';
 
 final theme = ThemeData(
   useMaterial3: true,
@@ -33,7 +36,7 @@ class _AppState extends State<App> {
   }
 
   void showScreen(String screen, BuildContext context,
-      {String? categoryTitle}) {
+      {String? categoryTitle, Meal? meal}) {
     if (screen == 'categories') {
       Navigator.of(context).push(
         MaterialPageRoute(
@@ -43,8 +46,17 @@ class _AppState extends State<App> {
     } else if (screen == 'meals list') {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) =>
-              MealsScreen(title: categoryTitle, meals: dummyMeals),
+          builder: (context) => MealsScreen(
+            title: categoryTitle,
+            meals: dummyMeals,
+            showScreen: showScreen,
+          ),
+        ),
+      );
+    } else if (screen == 'meal details') {
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => MealDetails(meal),
         ),
       );
     }

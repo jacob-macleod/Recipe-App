@@ -5,7 +5,12 @@ import 'package:meals_app/widgets/error_message.dart';
 import 'package:meals_app/widgets/meal_item.dart';
 
 class MealsScreen extends StatelessWidget {
-  MealsScreen({required this.title, required this.meals, super.key});
+  MealsScreen(
+      {required this.title,
+      required this.meals,
+      required this.showScreen,
+      super.key});
+  final void Function(String, BuildContext, {String? categoryTitle}) showScreen;
   final String? title;
   final List<Meal> meals;
   late String categoryId = '';
@@ -39,7 +44,11 @@ class MealsScreen extends StatelessWidget {
           : SingleChildScrollView(
               child: Column(
                 children: [
-                  for (final meal_item in selected_meals) MealItem(meal_item),
+                  for (final meal_item in selected_meals)
+                    MealItem(
+                      meal: meal_item,
+                      showScreen: showScreen,
+                    ),
                 ],
               ),
             ),
